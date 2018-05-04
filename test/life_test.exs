@@ -89,4 +89,21 @@ defmodule LifeTest do
 
     assert Life.advance(board) == [{2,2}, {2,1}]
   end
+
+  test "makes a spinner" do
+    board = [
+      {1,2},
+      {1,1},
+      {1,0}
+    ]
+
+    result = Life.advance(board)
+    assert result == [
+      {0,1},
+      {1,1},
+      {2,1}
+    ]
+
+    assert Life.advance(result) == board
+  end
 end
