@@ -120,6 +120,7 @@ defmodule LifeTest do
     board = [{1, 2}, {1, 1}, {2, 2}, {2, 1}]
 
     assert Life.advance(board) == board
+    assert Life.advance(board) |> Life.advance == board
   end
 
   test "a glider" do
