@@ -105,5 +105,12 @@ defmodule LifeTest do
     ]
 
     assert Life.advance(result) == board
+
+    result = Life.advance(board)
+             |> Life.advance
+             |> Life.advance
+             |> Life.advance
+
+    assert result == board
   end
 end
