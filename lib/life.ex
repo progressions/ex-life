@@ -43,6 +43,6 @@ defmodule Life do
         will_live?(board, {col, row})
       end)
     end)
-    |> Enum.uniq
+    |> Enum.uniq()
   end
 end
