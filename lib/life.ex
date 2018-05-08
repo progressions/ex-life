@@ -28,6 +28,13 @@ defmodule Life do
     |> length
   end
 
+  def neighbors_to_live(board, {col, row}) do
+    neighbors(board, {col, row})
+    |> Enum.filter(fn {col, row} ->
+      will_live?(board, {col, row})
+    end)
+  end
+
   def alive?(board, {col, row}), do: Enum.member?(board, {col, row})
 
   def will_live?(board, {col, row}) do
@@ -38,10 +45,7 @@ defmodule Life do
   def advance(board) do
     board
     |> Enum.flat_map(fn {col, row} ->
-      neighbors(board, {col, row})
-      |> Enum.filter(fn {col, row} ->
-        will_live?(board, {col, row})
-      end)
+      neighbors_to_live(board, {col, row})
     end)
     |> Enum.uniq()
   end
